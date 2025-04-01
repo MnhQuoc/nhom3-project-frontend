@@ -8,24 +8,25 @@ import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import {Menu, MenuItem} from "@mui/material";
-import {AccountCircle} from "@mui/icons-material";
+import { Menu, MenuItem } from "@mui/material";
+import { AccountCircle } from "@mui/icons-material";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
 function Header(props) {
     const { onDrawerToggle } = props;
-    const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const navigate = useNavigate();
 
-    const handleChange = (event) => {
-        setAuth(event.target.checked);
-    };
+
+    // Kiểm tra trạng thái đăng nhập từ localStorage 
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
@@ -34,6 +35,20 @@ function Header(props) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    // Hàm xử lý đăng xuất
+    const handleLogout = () => {
+        localStorage.removeItem('isLoggedIn');
+        navigate('/login');
+    };
+
+    // Hàm xử lý đăng nhập
+    const handleLogin = () => {
+        localStorage.removeItem('isLoggedIn');
+        navigate('/login');
+    };
+
+    
 
     return (
         <React.Fragment>
@@ -85,7 +100,7 @@ function Header(props) {
                                     onClick={handleMenu}
                                     color="inherit"
                                 >
-                                    <AccountCircle/>
+                                    <AccountCircle />
                                 </IconButton>
                                 <Menu
                                     id="menu-appbar"
@@ -102,8 +117,14 @@ function Header(props) {
                                     open={Boolean(anchorEl)}
                                     onClose={handleClose}
                                 >
-                                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                                    {isLoggedIn ? (
+                                        <div>
+                                            <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                                        </div>
+                                    ) : (
+                                        <MenuItem onClick={handleLogin}>Login</MenuItem>
+                                    )}
                                 </Menu>
                             </div>
                         </Grid>
@@ -115,10 +136,10 @@ function Header(props) {
                 color="primary"
                 position="static"
                 elevation={0}
-                sx={{zIndex: 0}}
+                sx={{ zIndex: 0 }}
             >
                 <Toolbar>
-                    <Grid container spacing={1} sx={{alignItems: 'center'}}>
+                    <Grid container spacing={1} sx={{ alignItems: 'center' }}>
                         <Grid item xs>
                             <Typography color="inherit" variant="h5" component="h1">
                                 Authentication
@@ -126,7 +147,7 @@ function Header(props) {
                         </Grid>
                         <Grid item>
                             <Button
-                                sx={{borderColor: lightColor}}
+                                sx={{ borderColor: lightColor }}
                                 variant="outlined"
                                 color="inherit"
                                 size="small"
