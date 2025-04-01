@@ -48,22 +48,31 @@ function Header(props) {
         navigate('/login');
     };
 
-    
+
 
     return (
         <React.Fragment>
             <AppBar color="primary" position="sticky" elevation={0}>
+
                 <Toolbar>
+                    {/* <Grid item xs>
+                        <img src='/src/components/image/logo.jpg'
+                            width={300}
+                            height={150}
+                            margin={20}
+                            padding={-20}>
+                        </img>
+                    </Grid> */}
                     <Grid container spacing={1} sx={{ alignItems: 'center' }}>
-                        <Grid sx={{ display: { sm: 'none', xs: 'block' } }} item>
-                            <IconButton
-                                color="inherit"
-                                aria-label="open drawer"
-                                onClick={onDrawerToggle}
-                                edge="start"
-                            >
-                                <MenuIcon />
-                            </IconButton>
+                        <Grid item>
+                            <img
+                                src="/src/components/image/logo.jpg"
+                                alt="Logo"
+                                style={{
+                                    width: '200px', // Đặt chiều rộng cố định
+                                    height: 'auto', // Tự động điều chỉnh chiều cao
+                                }}
+                            />
                         </Grid>
                         <Grid item xs />
                         <Grid item>
@@ -138,32 +147,7 @@ function Header(props) {
                 elevation={0}
                 sx={{ zIndex: 0 }}
             >
-                <Toolbar>
-                    <Grid container spacing={1} sx={{ alignItems: 'center' }}>
-                        <Grid item xs>
-                            <Typography color="inherit" variant="h5" component="h1">
-                                Authentication
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <Button
-                                sx={{ borderColor: lightColor }}
-                                variant="outlined"
-                                color="inherit"
-                                size="small"
-                            >
-                                Web setup
-                            </Button>
-                        </Grid>
-                        <Grid item>
-                            <Tooltip title="Help">
-                                <IconButton color="inherit">
-                                    <HelpIcon />
-                                </IconButton>
-                            </Tooltip>
-                        </Grid>
-                    </Grid>
-                </Toolbar>
+
             </AppBar>
         </React.Fragment>
     );
