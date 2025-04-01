@@ -7,7 +7,7 @@ function Copyright() {
         <Typography variant="body2" align="center" sx={{ color: 'text.secondary' }}>
             {'Copyright © '}
             <Link color="inherit" href="https://mui.com/">
-                Your Website
+                Nhóm 3 - C1024lm1-wf101
             </Link>{' '}
             {new Date().getFullYear()}.
         </Typography>

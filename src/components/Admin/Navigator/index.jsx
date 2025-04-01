@@ -14,45 +14,49 @@ import PublicIcon from '@mui/icons-material/Public';
 import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet';
 import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
 import {useNavigate} from "react-router";
+import { IconButton, SpeedDialIcon, StepIcon, SvgIcon } from '@mui/material';
+import CheckroomIcon from '@mui/icons-material/Checkroom';
+import Man2TwoToneIcon from '@mui/icons-material/Man2TwoTone';
+import HeadsetMicTwoToneIcon from '@mui/icons-material/HeadsetMicTwoTone';
+import ViewStreamIcon from '@mui/icons-material/ViewStream';
 
 const categories = [
     {
         id: 'Build',
         children: [
             {
-                id: 'Dashboard',
-                icon: <PeopleIcon/>,
+                id: 'Quản lý quần áo',
+                icon: <CheckroomIcon/>,
                 active: false,
-                url: '/admin/dashboard'
+                url: '/admin/clothes'
             },
             {
-                id: 'Book Manager',
-                icon: <DnsRoundedIcon/>,
+                id: 'Áo nam',
+                icon: <Man2TwoToneIcon/>,
                 active: false,
-                url: '/admin/books'
+                url: '/admin/manshirt'
             },
             {
-                id: 'Storage',
-                icon: <PermMediaOutlinedIcon/>,
+                id: 'Quần nam',
+                icon: <Man2TwoToneIcon/>,
                 active: false,
-                url: '/admin/storage'
-
+                url: '/admin/mantrouser'
             },
             {
-                id: 'Hosting',
-                icon: <PublicIcon/>,
+                id: 'Phụ kiện',
+                icon: <ViewStreamIcon/>,
                 active: false,
-                url: '/admin/hosting'
+                url: '/admin/accessory'
+         },
+            {
+                id: 'Liên hệ với chúng tôi',
+                icon: <HeadsetMicTwoToneIcon/>,
+                active: false,
+                url: '/admin/contacts'
             },
             {
-                id: 'Functions',
-                icon: <SettingsEthernetIcon/>,
-                active: false,
-                url: '/admin/functions'
-            },
-            {
-                id: 'Machine learning',
-                icon: <SettingsInputComponentIcon/>,
+                id: 'Khác',
+                icon: <SpeedDialIcon/>,
                 active: false,
                 url: '/admin/machine-learning'
             },
